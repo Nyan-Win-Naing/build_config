@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rider/config/config_values.dart';
+import 'package:rider/config/environment_config.dart';
 import 'package:shared/export_shared.dart';
 
 void main() {
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: THEME_COLORS[EnvironmentConfig.CONFIG_THEME_COLOR],
       ),
       home: const RiderHomePage(),
     );
@@ -37,15 +39,15 @@ class RiderHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Rider"),
+        title: Text(APP_TITLES[EnvironmentConfig.CONFIG_APP_TITLE] ?? ""),
       ),
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("This is rider app"),
+            Text("This is ${APP_TITLES[EnvironmentConfig.CONFIG_APP_TITLE] ?? ""} app"),
             TextButton(
-              onPressed: () => showSnackBar(context, "This is rider app"),
+              onPressed: () => showSnackBar(context, "This is ${APP_TITLES[EnvironmentConfig.CONFIG_APP_TITLE] ?? ""} app"),
               child: const Text("Show Snack Bar"),
             ),
           ],
